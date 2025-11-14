@@ -99,8 +99,9 @@ if (
     echo "<h3 class='error'>Faltan datos por llenar</h3>";
 }
 ?>
-  <a href="drogas.html" class="boton-regreso">← Regresar a la página principal</a>
+  <a href="index.html" class="boton-regreso">← Regresar a la página principal</a>
 </div>
 
 </body>
+
 </html>
