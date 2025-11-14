@@ -1,0 +1,560 @@
+/* RESET GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* FONDO GENERAL */
+body {
+    background: linear-gradient(135deg, #1a1a40, #302b63, #24243e);
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+    transition: background 0.5s, color 0.5s;
+}
+
+/* ENCABEZADO */
+header {
+    background: #2a2a72;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 40px 0;
+    margin-top: 35px;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+/* NAVEGACIÓN */
+nav {
+    background: #6b81ff;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* MENU PRINCIPAL */
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+    position: relative;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 15px 20px;
+    display: block;
+    transition: color 0.3s, transform 0.3s;
+}
+
+nav a:hover {
+    color: #ffeaa7;
+    transform: scale(1.1);
+}
+
+/* SUBMENÚ (LISTA DESPLEGABLE) */
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 60px; /* se muestra debajo del menú principal */
+    left: 0;
+    background: #4a62e6;
+    border-radius: 8px;
+    padding: 0;
+    list-style: none;
+    z-index: 1000;
+    min-width: 170px;
+}
+
+nav ul li:hover > ul {
+    display: block;
+}
+
+nav ul ul li {
+    width: 100%;
+}
+
+nav ul ul li a {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    font-weight: normal;
+    text-align: left;
+    transition: background 0.3s;
+}
+
+nav ul ul li a:hover {
+    background: #2a2a72;
+}
+
+/* BOTÓN MODO OSCURO */
+aside {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+}
+
+aside button {
+    background: #4a62e6;
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+aside button:hover {
+    background: #3d5aff;
+    transform: scale(1.1);
+}
+
+/* CONTENIDO PRINCIPAL */
+section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    gap: 30px;
+}
+
+/* ARTÍCULOS */
+article {
+    width: 70%;
+    background: #f7f9fc;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: background 0.5s, color 0.5s;
+}
+
+article h3 {
+    color: #2a2a72;
+    margin-bottom: 15px;
+    border-bottom: 3px solid #ab6bff;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* TABLAS */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+
+th.cecyte {
+    background-color: #2a2a72;
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+}
+
+td {
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+/* GALERÍA LIGHTBOX */
+.clickImagen {
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clickImagen:hover {
+    transform: scale(1.08);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+/* MODO OSCURO */
+body.dark {
+    background: #121212;
+    color: #f1f1f1;
+}
+
+body.dark header {
+    background: #1f1f3a;
+}
+
+body.dark nav {
+    background: #6c5ce7;
+}
+
+body.dark article {
+    background: #1e1e2f;
+    color: #855ef0;
+}
+
+body.dark th.cecyte {
+    background-color: #6c5ce7;
+}
+
+body.dark tbody {
+    background: #1e1e2f;
+}
+
+body.dark aside button {
+    background: #604bff;
+}
+
+body.dark aside button:hover {
+    background: #4c3fff;
+}
+
+/* GALERÍA POR BOTONES (con :target) */
+ul.slider {
+    position: relative;
+    width: 800px;
+    height: 300px;
+  }
+  
+  ul.slider li {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: inherit;
+    height: inherit;
+    transition: opacity 0.5s ;
+    background: #fff;
+    overflow: hidden;
+  }
+  
+  ul.slider li:first-child {
+    opacity: 1;
+  }
+  
+  ul.slider li:target {
+    opacity: 1;
+  }
+  
+  ul.slider img {
+    width: 90%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* BOTONES DE LA GALERÍA */
+  .botones {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .botones li {
+display: inline-block;
+text-align: center;
+  }
+
+  .botones li a {
+    display: inline-block;
+    color: rgb(95, 118, 245);
+    text-decoration: none;
+    background-color: #2a2a72;
+    padding: 10px;
+    width: 15px;
+    height: 20px;
+    font-size: 20px;
+    border-radius: 100%;
+  }
+  .botones a {
+    display: inline-block;
+    background: #2a2a72;
+    color: white;
+    text-decoration: none;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    margin: 0 5px;
+    border-radius: 50%; /* Esto crea el círculo */
+    font-weight: bold;
+    transition: all 0.3s;
+  }
+
+  .botones a:hover {
+    background: #6b81ff;
+    transform: scale(1.1);
+  }
+  
+  /* MODO OSCURO */
+  body.dark .botones a {
+    background: #604bff;
+  }
+  
+  body.dark .botones a:hover {
+    background: #855ef0;
+  }
+  
+  /* ==== LIGHTBOX MODAL ==== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+  }
+  
+  .modal-content {
+    position: relative;
+    margin: auto;
+    padding: 0;
+    width: 80%;
+    max-width: 1000px;
+  }
+  
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: #bbb;
+  }
+  
+  .misimagenes {
+    display: none;
+  }
+  
+  .anterior,
+  .siguiente {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    user-select: none;
+  }
+  
+  .siguiente {
+    right: 0;
+  }
+  
+  .anterior:hover, .siguiente:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+
+  
+  .fila > .columnas {
+    padding: 0.8px;
+}
+
+  .fila:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .columnas {
+    float: left;
+    width: 25%;
+}
+
+.galeria {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+}
+
+.miGaleria {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.botoncerrar:hover,
+.botoncerrar:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.cursor {
+    cursor: pointer;
+}
+
+.columnas img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  
+  .misimagenes img {
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+    border-radius: 10px;
+    transition: opacity 0.5s ease;
+  }
+
+/* GALERÍA AUTOMÁTICA */
+.slider {
+    margin-top: 40px;
+    width: 80%;
+    margin-left: 10%;
+    overflow: hidden;
+}
+
+.slider ul {
+    display: flex;
+    padding: 0;
+    width: 400%;
+    animation: cambio 15s infinite alternate linear;
+}
+
+.slider li {
+    width: 100%;
+    list-style: none;
+}
+
+.slider img {
+    width: 100%;
+    height: 80%;
+}
+
+@keyframes cambio {
+    0% { margin-left: 0; }
+    20% { margin-left: 0; }
+
+    25% { margin-left: -100%; }
+    45% { margin-left: -100%; }
+
+    50% { margin-left: -200%; }
+    70% { margin-left: -200%; }
+
+    75% { margin-left: -300%; }
+    100% { margin-left: -300%; }
+}
+
+/* PIE DE PÁGINA */
+footer {
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 20px 0;
+    margin-top: 40px;
+    background: #2a2a72;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+}
+
+.active {
+    border: 3px solid #ffeaa7;
+    box-shadow: 0 0 10px #ffeaa7;
+  }
+
+  @media screen and (max-width: 768px) {
+    /* Menú vertical en móviles */
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    nav a {
+      padding: 10px;
+      font-size: 1rem;
+    }
+  
+    /* Ajuste de artículos */
+    article {
+      width: 90%;
+      padding: 15px;
+    }
+  
+    /* Galería por botones */
+    ul.slider {
+      width: 100%;
+      height: auto;
+    }
+  
+    ul.slider img {
+      width: 100%;
+      height: auto;
+    }
+  
+    /* Columnas en galería */
+    .columnas {
+      width: 100%;
+      float: none;
+      margin-bottom: 10px;
+    }
+  
+    /* Imágenes en lightbox */
+    .misimagenes img {
+      height: auto;
+      max-height: 300px;
+    }
+  
+    /* Botones más grandes para tocar */
+    .botones a {
+      width: 45px;
+      height: 45px;
+      line-height: 45px;
+      font-size: 1.2rem;
+    }
+  
+    /* Modal más adaptable */
+    .modal-content {
+      width: 95%;
+    }
+  
+    /* Tabla con scroll horizontal */
+    .tabla-responsive {
+      overflow-x: auto;
+      width: 100%;
+    }
+  
+    table {
+      width: 600px; /* se mantiene el ancho interno */
+    }
+  }
+  
